@@ -1,0 +1,1 @@
+(sort (corelib high-scheme mathlib objsys low-scheme iolib *scheme* primops precore) (vector-sort! sort) (("modules/sort/sort.scm" function sort:heap-sort-1 ()) ("modules/sort/sort.scm" function sort:heap-sort->list ()) ("modules/sort/sort.scm" function sort:heap-sort->vector ()) ("modules/sort/sort.scm" function vector-sort! ()) ("modules/sort/sort.scm" function sort ())))

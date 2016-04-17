@@ -1,0 +1,18 @@
+#!/bin/sh
+
+if test "$1" = "-abt"
+then abt=-abt
+     shift
+else abt=""
+fi
+
+case "$1" in
+  -precore) cb=start ; shift ;;
+  -corelib) cb=+precore ; shift ;;
+  -lowscm) cb=+core ; shift ;;
+  *) cb=+low ;;
+esac
+
+exec /data/data/org.evilbinary.cl/system/rs/bin/rs -q $abt -image /data/data/org.evilbinary.cl/system/rs/resource/compiler/rsc.img \
+     -BC /data/data/org.evilbinary.cl/system/rs/resource/compiler/bytecode/bcgen.scm \
+     -config-basis $cb "$@"

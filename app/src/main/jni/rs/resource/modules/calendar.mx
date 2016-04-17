@@ -1,0 +1,2 @@
+;mx2 -- RScheme Module indeX (MX) file  -*-Scheme-*-
+(calendar "calendar" () () (syscalls tables regex high-scheme objsys *scheme* corelib primops iolib low-scheme mathlib precore) ())

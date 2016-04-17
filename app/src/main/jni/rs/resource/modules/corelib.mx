@@ -1,0 +1,2 @@
+;mx2 -- RScheme Module indeX (MX) file  -*-Scheme-*-
+(corelib "corelib" ("corelib") () (precore *scheme* primops) ())

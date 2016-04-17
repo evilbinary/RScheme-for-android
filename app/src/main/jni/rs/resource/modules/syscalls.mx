@@ -1,0 +1,2 @@
+;mx2 -- RScheme Module indeX (MX) file  -*-Scheme-*-
+(syscalls "syscalls" ("syscalls") ((11 "sysio")) (regex corelib start mlink paths high-scheme tables mathlib iolib objsys low-scheme *scheme* primops precore) ())

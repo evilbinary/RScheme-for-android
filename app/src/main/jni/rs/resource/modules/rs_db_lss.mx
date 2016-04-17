@@ -1,0 +1,2 @@
+;mx2 -- RScheme Module indeX (MX) file  -*-Scheme-*-
+(rs.db.lss "rs_db_lss" ("rs_db_lss") () (rs.glue rs.lang corelib primops precore *scheme*) ("lss" "z"))

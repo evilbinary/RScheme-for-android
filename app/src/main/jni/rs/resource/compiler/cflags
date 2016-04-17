@@ -1,0 +1,1 @@
+-DANDROID -g -O -DNDEBUG -DINLINES -DGC_MACROS -Wall -Wno-unused -I. -I../install/include

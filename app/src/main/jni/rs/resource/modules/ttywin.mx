@@ -1,0 +1,2 @@
+;mx2 -- RScheme Module indeX (MX) file  -*-Scheme-*-
+(ttywin "ttywin" ("ttywin") ((81 "curses")) (high-scheme tables objsys *scheme* primops corelib iolib low-scheme mathlib start precore) ())

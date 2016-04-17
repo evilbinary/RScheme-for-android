@@ -1,0 +1,2 @@
+;mx2 -- RScheme Module indeX (MX) file  -*-Scheme-*-
+(rs.sys.tables "rs_sys_tables" () () (tables corelib) ())

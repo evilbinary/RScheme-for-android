@@ -1,0 +1,2 @@
+;mx2 -- RScheme Module indeX (MX) file  -*-Scheme-*-
+(rs.sys.paths "rs_sys_paths" () () (paths) ())

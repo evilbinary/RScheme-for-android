@@ -1,0 +1,2 @@
+;mx2 -- RScheme Module indeX (MX) file  -*-Scheme-*-
+(earley "earley" () () (corelib mathlib objsys low-scheme tables *scheme* primops precore) ())

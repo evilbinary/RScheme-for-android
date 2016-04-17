@@ -1,0 +1,2 @@
+;mx2 -- RScheme Module indeX (MX) file  -*-Scheme-*-
+(rs.sys.threads.manager "rs_sys_threads_manager" ("rs_sys_threads_manager") () (regex debugger unixm sort syscalls corelib start mlink paths high-scheme tables mathlib iolib objsys low-scheme *scheme* primops precore) ())

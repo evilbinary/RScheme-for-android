@@ -1,0 +1,2 @@
+;mx2 -- RScheme Module indeX (MX) file  -*-Scheme-*-
+(editinp "editinp" ("editinp") () (corelib high-scheme tables mathlib objsys low-scheme iolib *scheme* primops precore) ())

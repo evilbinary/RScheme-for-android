@@ -1,0 +1,2 @@
+;mx2 -- RScheme Module indeX (MX) file  -*-Scheme-*-
+(iolib "iolib" ("iolib") ((10 "stdio")) (earley paths corelib mathlib objsys low-scheme tables *scheme* primops precore) ())
