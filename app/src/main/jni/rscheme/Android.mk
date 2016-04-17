@@ -8,7 +8,7 @@ else
 PLATFORM := android
 endif
 
-RSCHEME_HOME := $(LOCAL_PATH)/../rs
+RSCHEME_HOME := $(LOCAL_PATH)/../librs
 
 LOCAL_MODULE    := myrs
 #LOCAL_PATH := $(LOCAL_PATH)

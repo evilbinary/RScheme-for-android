@@ -41,6 +41,7 @@ struct module_descr *(std_modules[]) = {
         &module_fasl,
         STD_MODULES_DECL };
 obj eval_proc;
+int init=-1;
 
 void rs_init( int argc, const char **argv ) {
     char temp[1024];
@@ -48,30 +49,33 @@ void rs_init( int argc, const char **argv ) {
     rs_bool verbose = YES;
     rs_bool is_script = NO;
 
-    LOGI("rs_init");
+    if(init<0) {
+        LOGI("rs_init");
 
-    rs_install_dir = getenv( "RS_INSTALL_DIR" );
-    LOGI("RS_INSTALL_DIR=%s",rs_install_dir);
+        rs_install_dir = getenv("RS_INSTALL_DIR");
+        LOGI("RS_INSTALL_DIR=%s", rs_install_dir);
 
-    if (!rs_install_dir)
-        rs_install_dir = INSTALL_DIR;
+        if (!rs_install_dir)
+            rs_install_dir = INSTALL_DIR;
 
-    sprintf( temp, "%s" DEFAULT_IMG, rs_install_dir );
-    if (!os_file_exists_p( temp ) && strstr( temp, ".fas" )) {
-        strcpy( strstr( temp, ".fas" ), ".orig.fas" );
+        sprintf(temp, "%s" DEFAULT_IMG, rs_install_dir);
+        if (!os_file_exists_p(temp) && strstr(temp, ".fas")) {
+            strcpy(strstr(temp, ".fas"), ".orig.fas");
+        }
+        //init_dynamic_link( argv[0]);
+
+        start = init_scheme(argc, argv, temp, verbose, std_modules);
+        if (EQ(start, FALSE_OBJ)) {
+            fprintf(stderr, "initialization from %s failed\n", temp);
+            LOGE("initialization from %s failed\n", temp);
+            exit(1);
+        }
+        LOGI("rs_init start.");
+        rc = call_scheme(start, 3, NIL_OBJ, FALSE_OBJ, FALSE_OBJ);
+        eval_proc = rc;
+        LOGI("rs_init done.");
     }
-    init_dynamic_link( argv[0]);
-
-    start = init_scheme( argc, argv, temp, verbose, std_modules );
-    if (EQ(start,FALSE_OBJ)) {
-        fprintf( stderr, "initialization from %s failed\n",temp );
-        LOGE("initialization from %s failed\n",temp);
-        exit(1);
-    }
-    LOGI("rs_init start.");
-    rc = call_scheme( start, 3, NIL_OBJ, FALSE_OBJ, FALSE_OBJ );
-    eval_proc = rc;
-    LOGI("rs_init done.");
+    init=1;
 
 }
 obj rs_eval(char *str){
@@ -134,7 +138,7 @@ JNIEXPORT void JNICALL Java_org_evilbinary_rs_Rs_init(JNIEnv* env, jobject thiz)
         assert(obj);
         if(obj!=NULL){
             const char *chars = (*env)->GetStringUTFChars(env, obj, NULL);
-            LOGI("str:%s", chars);
+            //LOGI("str:%s", chars);
             char *str = malloc(strlen(chars));
             strcpy(str, chars);
             argv[i]=str;
