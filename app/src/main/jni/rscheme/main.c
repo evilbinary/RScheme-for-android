@@ -53,7 +53,7 @@ void rs_init( int argc, const char **argv ) {
         LOGI("rs_init");
 
         rs_install_dir = getenv("RS_INSTALL_DIR");
-        LOGI("RS_INSTALL_DIR=%s", rs_install_dir);
+        //LOGI("RS_INSTALL_DIR=%s", rs_install_dir);
 
         if (!rs_install_dir)
             rs_install_dir = INSTALL_DIR;
@@ -62,8 +62,8 @@ void rs_init( int argc, const char **argv ) {
         if (!os_file_exists_p(temp) && strstr(temp, ".fas")) {
             strcpy(strstr(temp, ".fas"), ".orig.fas");
         }
-        //init_dynamic_link( argv[0]);
 
+        init_dynamic_link( argv[0]);
         start = init_scheme(argc, argv, temp, verbose, std_modules);
         if (EQ(start, FALSE_OBJ)) {
             fprintf(stderr, "initialization from %s failed\n", temp);
@@ -82,7 +82,7 @@ obj rs_eval(char *str){
     return call_scheme( eval_proc, 1, make_string(str) );
 }
 void rs_exit(){
-    fclose(stdout);
+
 
 }
 
@@ -97,14 +97,7 @@ JNIEXPORT jstring JNICALL Java_org_evilbinary_rs_Rs_eval(JNIEnv * env, jobject o
     result=rs_eval(eval_str);
     LOGI("eval end.");
 
-    char buf[1024];
-    snprinto(buf,result,1024);
-    LOGI("result:%s",buf);
-
-    //debug(result);
-    //fflush(stdout);
-
-    ret=(*env)->NewStringUTF(env,buf );
+    ret=(*env)->NewStringUTF(env, string_text(result) );
     (*env)->ReleaseStringUTFChars(env,str, eval_str);
     return ret;
 
@@ -144,10 +137,6 @@ JNIEXPORT void JNICALL Java_org_evilbinary_rs_Rs_init(JNIEnv* env, jobject thiz)
             argv[i]=str;
         }
     }
-
-//    char a[1024];
-//    sprintf(a,"%s/log.txt",home_dir);
-//    freopen(a, "w+", stdout);
 
     rs_init(size,argv);
 
