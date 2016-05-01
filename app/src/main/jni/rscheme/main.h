@@ -21,8 +21,11 @@
 #include <rscheme/scheme.h>
 #include <rscheme/smemory.h>
 #include <rscheme/allocns.h>
-
+#include <jni.h>
 void rs_init( int argc, const char **argv );
 obj rs_eval(char *str);
+
+char* jstringTostring(JNIEnv* env, jstring jstr);
+jstring strToJstring(JNIEnv* env, const char* pat) ;
 
 #endif //RSCHEME_MAIN_H

@@ -11,32 +11,43 @@
 
 
     <EditText
+        android:id="@+id/editText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/editText"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
+        android:layout_above="@+id/scrollView"
         android:layout_alignParentEnd="true"
-
-        android:layout_above="@+id/textView" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="200dp"
-        android:text=""
-        android:id="@+id/textView"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
-        android:scrollbars="vertical"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentTop="true"
+        android:gravity="left|top"
+        />
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:fadingEdge="none"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentStart="true"
+            android:scrollbars="vertical"
+            android:singleLine="false"
+            android:text="" />
+    </ScrollView>
 
     <Button
+        android:id="@+id/runButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="运行"
-        android:id="@+id/runButton"
+        android:layout_alignEnd="@+id/editText"
         android:layout_below="@+id/editText"
-        android:layout_alignEnd="@+id/editText" />
+        android:text="运行" />
 
 
 </RelativeLayout>

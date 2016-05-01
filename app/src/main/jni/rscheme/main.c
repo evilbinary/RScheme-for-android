@@ -97,7 +97,8 @@ JNIEXPORT jstring JNICALL Java_org_evilbinary_rs_Rs_eval(JNIEnv * env, jobject o
     result=rs_eval(eval_str);
     LOGI("eval end.");
 
-    ret=(*env)->NewStringUTF(env, string_text(result) );
+    //ret=(*env)->NewStringUTF(env,unicode_string_text(result) );
+    ret=strToJstring(env,unicode_string_text(result));
     (*env)->ReleaseStringUTFChars(env,str, eval_str);
     return ret;
 
@@ -150,3 +151,30 @@ JNIEXPORT void JNICALL Java_org_evilbinary_rs_Rs_exit(JNIEnv * env, jobject obj)
     rs_exit();
 }
 
+
+
+char* jstringTostring(JNIEnv* env, jstring jstr) {
+    char* rtn = NULL;
+    jclass clsstring = (*env)->FindClass(env,"java/lang/String");
+    jstring strencode = (*env)->NewStringUTF(env,"utf-8");
+    jmethodID mid = (*env)->GetMethodID(env,clsstring, "getBytes", "(Ljava/lang/String;)[B");
+    jbyteArray barr= (jbyteArray)(*env)->CallObjectMethod(env,jstr, mid, strencode);
+    jsize alen = (*env)->GetArrayLength(env,barr);
+    jbyte* ba = (*env)->GetByteArrayElements(env,barr, JNI_FALSE);
+    if (alen > 0) {
+        rtn = (char*)malloc(alen + 1);
+        memcpy(rtn, ba, alen);
+        rtn[alen] = 0;
+    }
+    (*env)->ReleaseByteArrayElements(env,barr, ba, 0);
+    return rtn;
+}
+
+jstring strToJstring(JNIEnv* env, const char* pat) {
+    jclass strClass = (*env)->FindClass(env,"java/lang/String");
+    jmethodID ctorID = (*env)->GetMethodID(env,strClass, "<init>", "([BLjava/lang/String;)V");
+    jbyteArray bytes = (*env)->NewByteArray(env,strlen(pat));
+    (*env)->SetByteArrayRegion(env,bytes, 0, strlen(pat), (jbyte*)pat);
+    jstring encoding = (*env)->NewStringUTF(env,"utf-8");
+    return (jstring)(*env)->NewObject(env,strClass, ctorID, bytes, encoding);
+}
