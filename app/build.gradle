@@ -2,6 +2,7 @@ import org.apache.tools.ant.taskdefs.condition.Os
 
 apply plugin: 'com.android.application'
 
+
 android {
     compileSdkVersion 23
     buildToolsVersion "23.0.3"
@@ -41,8 +42,18 @@ android {
     tasks.withType(JavaCompile) {
         compileTask -> compileTask.dependsOn ndkBuild
     }
+    applicationVariants.all { variant ->
+        variant.outputs.each { output ->
+            def outputFile = output.outputFile
+            if (outputFile != null && outputFile.name.endsWith('.apk')) {
+                def fileName = "rscheme-${defaultConfig.versionName}.apk"
+                output.outputFile = new File(outputFile.parent, fileName)
+            }
+        }
+    }
 
-}
+
+ }
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
