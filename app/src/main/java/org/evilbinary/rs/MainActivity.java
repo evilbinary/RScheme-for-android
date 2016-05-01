@@ -3,6 +3,7 @@ package org.evilbinary.rs;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -36,19 +37,32 @@ public class MainActivity extends Activity implements View.OnClickListener {
         mButton.setOnClickListener(this);
 
 
+
         extractZipFile(this, "sys.img",this.getFilesDir().getPath());
 
     }
 
+
+    private  void run(){
+        new Handler().post(new Runnable() {
+            @Override
+            public void run() {
+                Rs rs = new Rs();
+                rs.init(getFilesDir().getPath(), "");
+                String exp = mEditText.getText().toString();
+                String ret = rs.eval(exp);
+                mTextView.setText(ret);
+                //Log.d(TAG, ret);
+            }
+        });
+    }
+
     @Override
     public void onClick(View v) {
-        Rs rs = new Rs();
-        rs.init(this.getFilesDir().getPath(), "");
-        String exp = mEditText.getText().toString();
-        String ret = rs.eval(exp);
-        mTextView.setText(ret);
-        //Log.d(TAG, ret);
+        run();
     }
+
+
 
     private void extractZipFile(Context context, String name,String filesDir) {
         String zipFileDir = filesDir + "/" + name;
