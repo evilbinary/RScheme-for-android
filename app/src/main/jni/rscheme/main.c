@@ -62,7 +62,7 @@ void rs_init( int argc, const char **argv ) {
         if (!os_file_exists_p(temp) && strstr(temp, ".fas")) {
             strcpy(strstr(temp, ".fas"), ".orig.fas");
         }
-
+        LOGI("init file %s",temp);
         init_dynamic_link( argv[0]);
         start = init_scheme(argc, argv, temp, verbose, std_modules);
         if (EQ(start, FALSE_OBJ)) {
