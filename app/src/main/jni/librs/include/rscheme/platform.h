@@ -9,19 +9,19 @@
    like AIX, WINNT, LINUX, etc.
 */
 
-#define PLATFORM_LINUX 1
+#define PLATFORM_ANDROID 1
 
 /* possible architectures (CPU types) we know about... */
 
 #define PLATFORM_ARCH_PPC     0
-#define PLATFORM_ARCH_I386    0
+#define PLATFORM_ARCH_I386 1
 #define PLATFORM_ARCH_MIPS    0
 #define PLATFORM_ARCH_SPARC   0
 #define PLATFORM_ARCH_M68K    0
 #define PLATFORM_ARCH_ALPHA   0
 #define PLATFORM_ARCH_S390    0
 #define PLATFORM_ARCH_X86_64  0
-#define PLATFORM_ARCH_ARM 1
+#define PLATFORM_ARCH_ARM  0
 #define PLATFORM_ARCH_UNKNOWN 0
  
 /* The GNU C compiler lets you compute "goto" targets. Parts of the
@@ -110,8 +110,8 @@
 #define ACCUM_GF_CACHE_HISTOGRAM 0
 #define ACCUM_BYTECODE_CORRELATION 0
 #define USE_PPC_CLOCK        0
-#define USE_i586_CLOCK       0          /* determined at config time */
-#define USE_TIMEOFDAY_CLOCK  1
+#define USE_i586_CLOCK 1
+#define USE_TIMEOFDAY_CLOCK 0
 
 /* on w/--enable-read-barrier 
  * (STILL UNDER DEVELOPMENT!)

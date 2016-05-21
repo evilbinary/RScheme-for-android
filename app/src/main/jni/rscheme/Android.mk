@@ -17,7 +17,7 @@ LOCAL_CFLAGS += -I$(RSCHEME_HOME)/include
 LOCAL_CFLAGS += -g -Wall -DANDROID  -O -DINLINES -DGC_MACROS
 LOCAL_LDLIBS := -lz
 LOCAL_LDLIBS += -llog
-LOCAL_STATIC_LIBRARIES :=   libpackages liblss librs
+LOCAL_STATIC_LIBRARIES :=    librs #libpackages liblss
 #LOCAL_SHARED_LIBRARIES :=
 include $(BUILD_SHARED_LIBRARY)
 

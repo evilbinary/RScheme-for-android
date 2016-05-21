@@ -1,5 +1,8 @@
 package org.evilbinary.rs;
-
+/**
+ * 作者:evilbinary on 3/17/16.
+ * 邮箱:rootdebug@163.com
+ */
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;

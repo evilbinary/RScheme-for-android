@@ -34,11 +34,11 @@
 extern int bci_trace_flag;
 
 struct module_descr *(std_modules[]) = {
-        &module_syscalls,
-        &module_unixm,
-        &module_rs_sys_threads_manager,
-        &module_rs_db_lss,
-        &module_fasl,
+//        &module_syscalls,
+//        &module_unixm,
+//        &module_rs_sys_threads_manager,
+//        &module_rs_db_lss,
+//        &module_fasl,
         STD_MODULES_DECL };
 obj eval_proc;
 int init=-1;
