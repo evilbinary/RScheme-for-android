@@ -6,10 +6,10 @@ RScheme Build (v0.7.3.4-b7u, 2007-05-30)
 **********************************************/
 
 
-#ifndef _H_TTYWIN
-#define _H_TTYWIN
+#ifndef _H_UNIXM
+#define _H_UNIXM
 
-/****************** Public Interface for Module `ttywin' ******************/
+/****************** Public Interface for Module `unixm' ******************/
 #include <rscheme/linktype.h>
-extern struct module_descr module_ttywin;
-#endif /* _H_TTYWIN */
+extern struct module_descr module_unixm;
+#endif /* _H_UNIXM */

@@ -12,11 +12,11 @@
 #include <rscheme/osglue.h>
 #include <rscheme/stdmodul.h>
 #include <rscheme/rlseconf.h>
-#include <rscheme/pkgs/syscalls.h>
-#include <rscheme/pkgs/unixm.h>
-#include <rscheme/pkgs/rs_sys_threads_manager.h>
-#include <rscheme/pkgs/rs_db_lss.h>
-#include <rscheme/pkgs/fasl.h>
+//#include <rscheme/pkgs/syscalls.h>
+//#include <rscheme/pkgs/unixm.h>
+//#include <rscheme/pkgs/rs_sys_threads_manager.h>
+//#include <rscheme/pkgs/rs_db_lss.h>
+//#include <rscheme/pkgs/fasl.h>
 
 #include <rscheme/scheme.h>
 #include <rscheme/smemory.h>
